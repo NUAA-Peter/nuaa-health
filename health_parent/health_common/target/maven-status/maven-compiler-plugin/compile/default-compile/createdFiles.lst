@@ -1,4 +1,5 @@
 com\itheima\pojo\Role.class
+com\itheima\utils\DateUtils.class
 com\itheima\pojo\CheckItem.class
 com\itheima\pojo\User.class
 com\itheima\constant\RedisMessageConstant.class
