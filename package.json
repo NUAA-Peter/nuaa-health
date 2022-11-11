@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "element-ui": "^2.15.2",
-    "sass": "^1.39.0"
+    "element-ui": "^2.13.2",
+    "node.js": "^0.0.1-security"
   }
 }
