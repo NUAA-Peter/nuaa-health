@@ -19,6 +19,20 @@ public class MemberServiceImpl implements MemberService {
     @Autowired
     private MemberDao memberDao;
 
+    public Member findByTelephone(String telephone) {
+        return memberDao.findByTelephone(telephone);
+    }
+
+    //保存会员信息
+    public void add(Member member) {
+        String password = member.getPassword();
+        if(password != null){
+            //使用md5将明文密码进行加密
+            password = password;
+            member.setPassword(password);
+        }
+        memberDao.add(member);
+    }
 
     @Override
     public List<Integer> findMemberCountByMonth(List<String> month) {

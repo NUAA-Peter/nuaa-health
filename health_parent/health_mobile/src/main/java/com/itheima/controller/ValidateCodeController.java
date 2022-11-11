@@ -47,7 +47,7 @@ public class ValidateCodeController {
 //            //验证码发送失败
 //            return new Result(false, MessageConstant.SEND_VALIDATECODE_FAIL);
 //        }
-        System.out.println("发送的手机验证码为：" + 123456);
+        System.out.println("发送的手机验证码为：" + code);
         //将生成的验证码缓存到redis
 //        jedisPool.getResource().setex(telephone+RedisMessageConstant.SENDTYPE_LOGIN,
 //                5 * 60,

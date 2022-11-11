@@ -5,6 +5,7 @@ import com.itheima.constant.MessageConstant;
 import com.itheima.entity.Result;
 import com.itheima.pojo.Setmeal;
 import com.itheima.service.MemberService;
+import com.itheima.service.ReportService;
 import com.itheima.service.SetmealService;
 import com.itheima.utils.DateUtils;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -53,5 +54,46 @@ public class ReportController {
         map.put("memberCount",memberCount);
 
         return new Result(true, MessageConstant.GET_MEMBER_NUMBER_REPORT_SUCCESS,map);
+    }
+
+    @Reference
+    private SetmealService setmealService;
+    /**
+     * 套餐占比统计
+     * @return
+     */
+    @RequestMapping("/getSetmealReport")
+    public Result getSetmealReport(){
+        List<Map<String, Object>> list = setmealService.findSetmealCount();
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("setmealCount",list);
+
+        List<String> setmealNames = new ArrayList<>();
+        for(Map<String,Object> m : list){
+            String name = (String) m.get("name");
+            setmealNames.add(name);
+        }
+        map.put("setmealNames",setmealNames);
+
+        return new Result(true, MessageConstant.GET_SETMEAL_COUNT_REPORT_SUCCESS,map);
+    }
+
+    @Reference
+    private ReportService reportService;
+
+    /**
+     * 获取运营统计数据
+     * @return
+     */
+    @RequestMapping("/getBusinessReportData")
+    public Result getBusinessReportData(){
+        try {
+            Map<String, Object> result = reportService.getBusinessReport();
+            return new Result(true,MessageConstant.GET_BUSINESS_REPORT_SUCCESS,result);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new Result(true,MessageConstant.GET_BUSINESS_REPORT_FAIL);
+        }
     }
 }
