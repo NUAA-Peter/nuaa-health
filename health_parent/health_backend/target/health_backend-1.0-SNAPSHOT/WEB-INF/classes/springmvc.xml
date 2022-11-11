@@ -45,5 +45,4 @@
         <property name="defaultEncoding" value="UTF-8"/>
     </bean>
 
-    <import resource="spring-redis.xml"></import>
 </beans>
